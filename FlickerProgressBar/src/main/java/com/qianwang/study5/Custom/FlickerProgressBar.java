@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -32,6 +33,8 @@ public class FlickerProgressBar extends View {
     private boolean isStop = false;
     private Bitmap flickerBitmap;//闪烁的图片
     private int flickerLeft;  //闪烁图片的开始位置
+    private String progressText;
+    private Rect bound;
 
     public FlickerProgressBar(Context context) {
         this(context, null);
@@ -44,6 +47,8 @@ public class FlickerProgressBar extends View {
     public FlickerProgressBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initAttrs(attrs);
+        bound=new Rect();
+
     }
 
     public void initAttrs(AttributeSet attrs) {
@@ -99,6 +104,12 @@ public class FlickerProgressBar extends View {
 
     private void drawProgressText(Canvas canvas) {
 
+        Paint textPaint=new Paint();
+        progressText=getProgressText();
+        textPaint.getTextBounds(progressText,0,progressText.length(),bound);
+        int xWidth=(getMeasuredWidth()-bound.width())/2;
+        int xHeight=(getMeasuredHeight()+bound.height())/2;
+        canvas.drawText(progressText,xWidth,xHeight,textPaint);
 
     }
 
@@ -131,5 +142,11 @@ public class FlickerProgressBar extends View {
         mPaint.setStrokeWidth(6);
         mPaint.setStyle(Paint.Style.STROKE);
         canvas.drawRect(0, 0, mWidth, mHeight, mPaint);
+    }
+
+    public String getProgressText() {
+
+
+        return null;
     }
 }
