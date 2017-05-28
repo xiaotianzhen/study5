@@ -5,5 +5,7 @@
         <attr name="textSize" format="dimension|reference"/>
         <attr name="loadingColor" format="color|reference"/>
         <attr name="stopColor" format="color|reference"/>
+        <attr name="radius" format="dimension|reference"/>
+        <attr name="borderWidth" format="dimension|reference"/>
     </declare-styleable>
 </resources>
