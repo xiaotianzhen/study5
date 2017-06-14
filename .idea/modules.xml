@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FlickerProgressBar/FlickerProgressBar.iml" filepath="$PROJECT_DIR$/FlickerProgressBar/FlickerProgressBar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bufferknifedemo/bufferknifedemo.iml" filepath="$PROJECT_DIR$/bufferknifedemo/bufferknifedemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/study5.iml" filepath="$PROJECT_DIR$/study5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weatherview/weatherview.iml" filepath="$PROJECT_DIR$/weatherview/weatherview.iml" />
     </modules>
   </component>
 </project>

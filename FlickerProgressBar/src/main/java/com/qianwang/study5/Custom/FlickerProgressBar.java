@@ -13,7 +13,6 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.Shader;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 import com.qianwang.study5.R;
@@ -70,6 +69,14 @@ public class FlickerProgressBar extends View implements Runnable {
 
 
     private void init() {
+
+        if (isStop()) {
+            progressColor = stopColor;
+        } else {
+            progressColor = loadingColor;
+        }
+
+
         flickerBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.flicker);
         flickerLeft = -flickerBitmap.getWidth();
 
@@ -77,8 +84,6 @@ public class FlickerProgressBar extends View implements Runnable {
         pgCanvas = new Canvas(pgBitmap);
         thread = new Thread(this);
         thread.start();
-
-
     }
 
 
@@ -182,7 +187,6 @@ public class FlickerProgressBar extends View implements Runnable {
     private void drawBorder(Canvas canvas) {
 
         mPaint = new Paint();
-        mPaint.setAntiAlias(true);
         mPaint.setColor(progressColor);
         mPaint.setStrokeWidth(6);
         mPaint.setStyle(Paint.Style.STROKE);
@@ -270,8 +274,6 @@ public class FlickerProgressBar extends View implements Runnable {
         progressText = "下载";
         flickerLeft = -flickerBitmap.getWidth();
         init();
-
-
     }
 
     public void finishLoad() {
@@ -285,8 +287,8 @@ public class FlickerProgressBar extends View implements Runnable {
         try {
             while (!isStop && !thread.isInterrupted()) {
                 flickerLeft += dp2px(5);
-                float progressWidth =(progress / MAX_PROGRESS) * getMeasuredWidth();
-                if (flickerLeft>= progressWidth) {
+                float progressWidth = (progress / MAX_PROGRESS) * getMeasuredWidth();
+                if (flickerLeft >= progressWidth) {
                     flickerLeft = -width;
                 }
                 postInvalidate();

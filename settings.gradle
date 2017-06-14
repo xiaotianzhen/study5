@@ -1,1 +1,1 @@
-include ':FlickerProgressBar'
+include ':FlickerProgressBar', ':weatherview', ':bufferknifedemo'
